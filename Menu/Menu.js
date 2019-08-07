@@ -1,12 +1,12 @@
 /* This is the data we will be using, study it but don't change anything, yet. */
 
 let menuItems = [
-  'Students',
-  'Faculty',
+  "Students",
+  "Faculty",
   "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
+  "Tech Trends",
+  "Music",
+  "Log Out"
 ];
 
 /* 
@@ -18,6 +18,40 @@ let menuItems = [
       {each menu item as a list item}
     </ul>
   </div>
+  */
+
+const createMenu = menuArr => {
+  const menu = document.createElement("div");
+  const list = document.createElement("ul");
+  menuArr.forEach(el => {
+    const li = document.createElement("li");
+    li.textContent = el;
+    list.appendChild(li);
+  });
+
+  menu.appendChild(list);
+
+  menu.classList.add("menu");
+
+  const menuBtn = document.querySelector(".menu-button");
+
+  menuBtn.addEventListener("click", toggleMenu);
+
+  function toggleMenu() {
+    menu.classList.toggle("menu--open");
+  }
+
+  return menu;
+};
+
+const header = document.querySelector(".header");
+header.appendChild(createMenu(menuItems));
+
+// const menuList = createMenu(menuItems);
+
+// const header = document.querySelector(".header");
+// header.appendChild(menuList);
+/*
 
   Pass the function an array as it's only argument.
 

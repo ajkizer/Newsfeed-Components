@@ -33,20 +33,22 @@ const createMenu = menuArr => {
 
   menu.classList.add("menu");
 
-  const menuBtn = document.querySelector(".menu-button");
-
-  menuBtn.addEventListener("click", toggleMenu);
-
-  function toggleMenu() {
-    menu.classList.toggle("menu--open");
-  }
-
   return menu;
 };
 
 const header = document.querySelector(".header");
 header.appendChild(createMenu(menuItems));
 
+var menuState = 0;
+const menu = document.querySelector(".menu");
+const menuBtn = document.querySelector(".menu-button");
+
+menuBtn.addEventListener("click", function(e) {
+  e.preventDefault();
+  let tl = new TimelineLite();
+  menu.classList.toggle("menu--open");
+  tl.from(menu, 0.3, { xPercent: -100 });
+});
 // const menuList = createMenu(menuItems);
 
 // const header = document.querySelector(".header");
